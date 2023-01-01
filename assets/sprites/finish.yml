@@ -1,0 +1,5 @@
+size: 64
+states:
+  idle:
+    duration: 0
+    frame_delta: 50

@@ -1,0 +1,133 @@
+## The display name of the level in the level selector.
+name = "Level 1"
+
+[camera]
+## The starting position of the camera
+pos = [0.0, 0.0]
+## The maximum position the camera can be in. This is where the camera will move towards if its speed != 0. The camera
+## will never go farther than this point, even if it is moved by the player.
+destination = [0.0, 1.9166]
+## The speed factor of the camera. If zero, the camera will not move by itself.
+speed = 0.0
+
+[tilemap_config]
+## The tileset to use. Corresponds with a file in `assets/tilesets/`.
+tileset = "terrain.png"
+## The tile to fill in outside of the actual tilemaps.
+default_tile = "wall"
+## The variant of the tile above.
+default_variant = 4
+
+# Entities
+# --------
+# Each entity should contain at least a type and the position of the entity. Some entities, such as a tilemap, require
+# some extra data in order to be created.
+
+[[entity]]
+type = "tilemap"
+pos = [0.0, -0.5]
+scale = [0.08333, 0.08333]
+### Tilemap data
+[entity.tilemap]
+## How many tiles the tilemap should have in the x-axis. The position of the tilemap corresponds with the middle collumn
+## of these tiles.
+width = 22
+## The amount of tiles the tilemap should have in the y-axis. The position of the tilemap corresponds with the lowest
+## row of tiles.
+height = 34
+## The palette defines all the types of tiles used in the tilemap. The names correspond with entries in the tileset (see
+## `[tilemap_config]`). The added tiles and all their variants can then be used to specify the actual content of the
+## tilemap.
+## Each tile type in the palette may also optionall specify a collider, existing of zero, one or many axis-aligned
+## rectangles (they cannot be rotated). (0, 0) is always the bottom left of the tile, (1, 1) is always the top right.
+palette = [
+    { name = "air" },                                       #0
+    { name = "wall", hitbox = [[0.0, 0.0, 1.0, 1.0]] },     #1
+    { name = "grass", hitbox = [[0.0, 0.0, 1.0, 1.0]] },    #2
+    { name = "grass2", hitbox = [[0.0, 0.0, 1.0, 1.0]] },   #3
+    { name = "brick", hitbox = [[0.0, 0.0, 1.0, 1.0]] },    #4
+    { name = "wood", hitbox = [[0.0, 0.0, 1.0, 1.0]] },     #5
+    { name = "gold", hitbox = [[0.0, 0.0, 1.0, 1.0]] },     #6
+    { name = "iron", hitbox = [[0.0, 0.0, 1.0, 1.0]] },     #7
+]
+## The content of the tilemap. Should be an array with exactly widht*height entries. It is specified in row-major order,
+## meaning entries `0 -> width-1` are the first row (left->right), `width -> 2*width -1` is the second row, etc. The
+## first row that is specified is the bottom row in-game.
+## The format is "<palette_index>:<variant>". The palette_index tells the game which tile type from the palette to use,
+## starting from zero. The variant is the variant number of that tile type. This variant should exist in the tileset.
+content = [
+    "1:4", "1:4", "1:4", "1:4", "1:9", "1:1", "1:1", "1:1", "1:1", "1:1", "1:1", "1:1", "1:1", "1:1", "1:1", "1:1", "1:1", "1:1", "1:1", "1:1", "1:10", "1:4",
+    "1:4", "1:4", "1:4", "1:4", "1:5", "2:4", "2:4", "2:4", "2:4", "2:4", "2:4", "2:4", "2:4", "2:4", "2:4", "2:4", "2:4", "2:4", "2:4", "2:4", "1:3", "1:4",
+    "1:4", "1:4", "1:4", "1:4", "1:5", "2:1", "2:1", "2:1", "2:1", "2:1", "2:1", "2:1", "2:1", "2:1", "2:1", "2:1", "2:1", "2:1", "2:1", "2:1", "1:3", "1:4",
+    "1:4", "1:9", "1:1", "1:1", "1:2", "3:5", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "3:3", "3:4", "3:5", "3:5", "0:0", "0:0", "1:3", "1:4",
+    "1:4", "1:5", "3:4", "3:4", "3:4", "3:5", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "3:3", "3:4", "3:5", "3:2", "0:0", "0:0", "1:3", "1:4",
+    "1:4", "1:5", "3:1", "3:1", "3:1", "3:2", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "3:3", "3:4", "3:5", "0:0", "0:0", "0:0", "1:3", "1:4",
+    "1:4", "1:5", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "3:3", "3:4", "3:5", "0:0", "0:0", "0:0", "1:3", "1:4",
+    "1:4", "1:5", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "3:0", "3:1", "3:2", "0:0", "0:0", "0:0", "1:3", "1:4",
+    "1:4", "1:5", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "1:3", "1:4",
+    "1:9", "1:2", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "7:1", "7:2", "7:3", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "1:3", "1:4",
+    "1:5", "4:6", "4:7", "4:8", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "1:3", "1:4",
+    "1:5", "4:0", "4:1", "4:2", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "1:3", "1:4",
+    "1:11", "1:8", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "1:3", "1:4",
+    "1:4", "1:5", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "1:3", "1:4",
+    "1:4", "1:5", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "1:3", "1:4",
+    "1:4", "1:5", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "4:6", "4:7", "4:7", "4:7", "4:7", "4:7", "4:7", "4:7", "4:7", "4:7", "4:7", "4:7", "1:3", "1:4",
+    "1:4", "1:5", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "4:3", "4:4", "4:4", "4:4", "4:4", "4:4", "4:4", "4:4", "4:4", "4:4", "4:4", "4:4", "1:3", "1:4",
+    "1:4", "1:5", "0:0", "0:0", "0:0", "7:0", "0:0", "0:0", "4:0", "4:1", "4:1", "4:1", "4:1", "4:1", "4:1", "4:1", "4:1", "4:1", "4:1", "4:1", "1:3", "1:4",
+    "1:4", "1:5", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "1:3", "1:4",
+    "1:4", "1:5", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "1:3", "1:4",
+    "1:4", "1:5", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "7:1", "7:2", "7:3", "0:0", "0:0", "0:0", "0:0", "1:3", "1:4",
+    "1:4", "1:5", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "7:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "1:3", "1:4",
+    "1:4", "1:5", "0:0", "0:0", "0:0", "0:0", "0:0", "7:1", "7:2", "7:3", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "1:3", "1:4",
+    "1:4", "1:5", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "1:3", "1:4",
+    "1:4", "1:5", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "7:6", "7:7", "0:0", "0:0", "0:0", "1:3", "1:4",
+    "1:4", "1:5", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "7:6", "7:7", "0:0", "7:1", "7:2", "7:4", "7:5", "7:1", "7:2", "7:3", "1:3", "1:4",
+    "1:4", "1:5", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "7:4", "7:5", "0:0", "0:0", "0:0", "0:0", "7:0", "0:0", "0:0", "0:0", "1:3", "1:4",
+    "5:6", "5:7", "5:7", "5:7", "5:7", "5:8", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "1:3", "1:4",
+    "5:0", "5:1", "5:1", "5:1", "5:1", "5:2", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "1:3", "1:4",
+    "1:4", "1:5", "6:1", "6:2", "6:3", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "1:3", "1:4",
+    "1:4", "1:5", "6:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "1:3", "1:4",
+    "1:4", "1:5", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "7:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "1:3", "1:4",
+    "1:4", "1:5", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "7:0", "7:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "0:0", "1:3", "1:4",
+    "1:4", "1:11", "1:7", "1:7", "1:7", "1:7", "1:7", "1:7", "1:7", "1:7", "1:7", "1:7", "1:7", "1:7", "1:7", "1:7", "1:7", "1:7", "1:7", "1:7", "1:12", "1:4",
+]
+
+## Melon pick-ups that can be collected to give extra points. By default, melons give 100 points each.
+[[entity]]
+type = "melon"
+pos = [0.0, 0.15]
+
+[[entity]]
+type = "melon"
+pos = [-0.15, 0.15]
+
+[[entity]]
+type = "melon"
+pos = [0.15, 0.15]
+
+[[entity]]
+type = "melon"
+pos = [-0.3, 0.15]
+
+[[entity]]
+type = "melon"
+pos = [0.4166, 2.1666]
+## The score that is received when collecing a melon can also be manually set using the `score` key.
+score = 200
+
+[[entity]]
+type = "melon"
+pos = [0.65, 1.75]
+score = 150
+
+## The finish is the destination that needs to be reached in order to complete a level. It looks like a flag in-game.
+## Multiple of these can exists in the world.
+[[entity]]
+type = "finish"
+pos = [-0.58333, 2.1626]
+
+## The player entity should always be included in the level in order to make it playable. The player should preferrably
+## always be the last entry, so it can be rendered on top of all the other entities.
+[[entity]]
+type = "player"
+pos = [0.0, -0.1666]

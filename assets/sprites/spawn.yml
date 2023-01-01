@@ -1,0 +1,8 @@
+size: 96
+states:
+  spawn:
+    duration: 350
+    frame_delta: 50
+  despawn:
+    duration: 350
+    frame_delta: 50

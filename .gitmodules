@@ -1,0 +1,6 @@
+[submodule "extern/yaml-cpp"]
+	path = extern/yaml-cpp
+	url = https://github.com/jbeder/yaml-cpp
+[submodule "extern/toml11"]
+	path = extern/toml11
+	url = https://github.com/ToruNiina/toml11.git

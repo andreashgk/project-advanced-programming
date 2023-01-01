@@ -1,0 +1,27 @@
+size: 32
+states:
+  # The state 'idle' will use the corresponding 'player/idle.png' texture.
+  idle:
+    # The maximum amount of time this animation can play for. If this is zero, the animation will be able to play
+    # indefinitely.
+    duration: 0
+    # How long each separate frame should be displayed. A lower frame delta will make the animation play faster.
+    frame_delta: 50
+  run:
+    duration: 0
+    frame_delta: 50
+  jump:
+    duration: 0
+    frame_delta: 50
+  fall:
+    duration: 0
+    frame_delta: 50
+  wall_jump:
+    duration: 0
+    frame_delta: 50
+  hit:
+    duration: 350
+    frame_delta: 50
+  double_jump:
+    duration: 300
+    frame_delta: 50
